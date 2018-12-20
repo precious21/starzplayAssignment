@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages="com.starzplay.assignment.controller")
 public class AssignmentApplication {
 
+	
 	public static void main(String[] args) {
 		SpringApplication.run(AssignmentApplication.class, args);
 	}
