@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.starzplay.assignment.util;
+package com.starzplay.assignment.response;
 
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  */
 @Component
 @JsonInclude(Include.NON_NULL)
-public class ResponseUtils {
+public class ResponseObject {
 
 	private String result_code;
 	
