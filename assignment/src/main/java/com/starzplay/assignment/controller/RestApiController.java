@@ -33,7 +33,11 @@ public class RestApiController {
 		try {
 			if (id != null) {
 				String generatedString = Utils.generateRandomAlphaNumericString(6);
-				storeCode.put(id, generatedString);
+				if(storeCode.get(id) == null) { 
+					storeCode.put(id, generatedString);	
+				} else {
+					storeCode.replace(id, generatedString);
+				}
 				responseUtils.setMessage("successfull");
 				responseUtils.setResult_code(generatedString);
 			} else {
@@ -53,15 +57,20 @@ public class RestApiController {
 		ResponseObject responseUtils = new ResponseObject();
 		try {
 			if (id != null) {
-				if (storeCode.get(id).equalsIgnoreCase(code)) {
-					responseUtils.setMessage(code);
-					responseUtils.setValid("true");
+				if (storeCode.get(id) != null) {
+					if(storeCode.get(id).equalsIgnoreCase(code)){
+						responseUtils.setMessage(code);
+						responseUtils.setValid("true");
+					} else {
+						responseUtils.setMessage(code);
+						responseUtils.setValid("false");
+					}
 				} else {
 					responseUtils.setMessage(code);
 					responseUtils.setValid("false");
 				}
 			} else {
-				responseUtils.setMessage(code);
+				responseUtils.setMessage("id missing");
 				responseUtils.setValid("false");
 			}
 		} catch (Exception ex) {
