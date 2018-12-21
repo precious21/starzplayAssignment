@@ -23,17 +23,31 @@ public class AssignmentApplicationTests {
 	}
 	
 	@Test
-	public void testVerificationCode_withId_shouldReturnResponseUtils() {
-		ResponseObject responseUtils =  mockController.verificationCode("444");
-		Assertions.assertThat(responseUtils).isNotNull();
-		Assertions.assertThat(responseUtils.getMessage()).isEqualTo("successfull");
+	public void testVerificationCode_withId_shouldReturnresponse() {
+		ResponseObject response =  mockController.verificationCode("444");
+		Assertions.assertThat(response).isNotNull();
+		Assertions.assertThat(response.getMessage()).isEqualTo("successfull");
 	}
 	
 	@Test
-	public void testVerificationCode_withNullId_shouldReturnResponseUtils() {
-		ResponseObject responseUtils =  mockController.verificationCode(null);
-		Assertions.assertThat(responseUtils).isNotNull();
-		Assertions.assertThat(responseUtils.getMessage()).isEqualTo("error");
+	public void testVerificationCode_withNullId_shouldReturnresponse() {
+		ResponseObject response =  mockController.verificationCode(null);
+		Assertions.assertThat(response).isNotNull();
+		Assertions.assertThat(response.getMessage()).isEqualTo("error");
+	}
+	
+	@Test
+	public void getVerificationCode_withIdAndCode_shouldReturnresponse() {
+		ResponseObject response =  mockController.getVerificationCode("444", "abc4fg");
+		Assertions.assertThat(response).isNotNull();
+		Assertions.assertThat(response.getMessage()).isEqualTo("abc4fg");
+	}
+	
+	@Test
+	public void getVerificationCode_withNullIdAndCode_shouldReturnresponse() {
+		ResponseObject response =  mockController.getVerificationCode(null, null);
+		Assertions.assertThat(response).isNotNull();
+		Assertions.assertThat(response.getValid()).isEqualTo("false");
 	}
 }
 

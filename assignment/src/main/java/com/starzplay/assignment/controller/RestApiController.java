@@ -56,7 +56,7 @@ public class RestApiController {
 	public ResponseObject getVerificationCode(@PathVariable String id, @PathVariable String code) {
 		ResponseObject responseUtils = new ResponseObject();
 		try {
-			if (id != null) {
+			if (id != null && code != null) {
 				if (storeCode.get(id) != null) {
 					if(storeCode.get(id).equalsIgnoreCase(code)){
 						responseUtils.setMessage(code);
